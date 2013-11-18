@@ -22,8 +22,13 @@ if ($o instanceof IREST) {
 } else $r = NULL;
 
 if (!($r === NULL)) {
-    header("Content-type: text/x-json");
-    echo(json_encode($r));
+    if (is_string($r)) {
+        /* assume the header is given in the rest call */
+        echo $r;
+    } else {
+        header("Content-type: text/x-json");
+        echo(json_encode($r));
+    }
 } else {
     header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
     echo "Something went wrong when requesting REST object " . $path;

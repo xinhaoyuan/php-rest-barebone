@@ -12,7 +12,7 @@ class Backend extends DefaultIRest {
         return $instance; 
     }
 
-    protected function __construct($config) {
+    protected function __construct() {
     }
 };
 ?>
